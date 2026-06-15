@@ -107,8 +107,7 @@ Placez les fichiers suivants dans le dossier `data/` (à créer) :
 | `hosts.csv` | https://logbrain-datasets.s3.eu-west-1.amazonaws.com/airbnb/hosts.csv |
 | `reviews.csv` | https://logbrain-datasets.s3.eu-west-1.amazonaws.com/airbnb/reviews.csv |
 | `listings.csv` | https://logbrain-datasets.s3.eu-west-1.amazonaws.com/airbnb/listings.csv |
-
-> ℹ️ `seed_full_moon_dates.csv` est déjà inclus dans `seeds/`.
+| `seed_full_moon_dates.csv` | https://logbrain-datasets.s3.eu-west-1.amazonaws.com/airbnb/seed_full_moon_dates.csv |
 
 ---
 
@@ -146,7 +145,7 @@ dbt docs serve --profiles-dir .
 streamlit run streamlit/app.py
 ```
 
-Accès : http://localhost:8501
+Accès : https://github.com/JadeUnivers/DevOps/
 
 ---
 
