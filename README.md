@@ -78,7 +78,7 @@ airbnb_analytics/
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/<votre-org>/airbnb_analytics.git
+git clone https://github.com/JadeUnivers/DevOps.git
 cd airbnb_analytics
 ```
 
@@ -88,6 +88,8 @@ cd airbnb_analytics
 python -m venv .venv
 # Windows
 .venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
 ```
 
 ### 3. Installer les dépendances
@@ -177,9 +179,9 @@ Accès : https://github.com/JadeUnivers/DevOps/
 
 | Membre | Responsabilités |
 |--------|----------------|
-| Jade  | Couche Bronze, couche Silver, documentation |
-| David | Tests qualité, Couche Gold, revues de code |
-| Chris Anthony | Application Streamlit, README |
+| David ATCHORI | Couche Bronze, couche Silver, documentation |
+| Christ Antony TCHOKOGUEU| Tests qualité, Couche Gold, revues de code |
+| Jade DELCOURT | Application Streamlit, README |
 
 
 ---
