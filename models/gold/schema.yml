@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: dim_hosts
+    description: >
+      Vue dimensionnelle des hôtes Airbnb. Utilisée pour les analyses
+      sur les profils hôtes et les superhosts.
+    columns:
+      - name: host_id
+        description: Clé primaire de l'hôte
+        tests:
+          - not_null
+          - unique
+      - name: host_name
+        description: Nom de l'hôte
+        tests:
+          - not_null
+      - name: is_superhost
+        description: Statut superhost (booléen)
+        tests:
+          - not_null
+
+  - name: dim_listings
+    description: >
+      Vue dimensionnelle des logements enrichie avec les informations hôte.
+      Jointure LEFT JOIN avec dim_hosts.
+    columns:
+      - name: listing_id
+        description: Clé primaire du logement
+        tests:
+          - not_null
+          - unique
+      - name: room_type
+        description: Type de logement
+        tests:
+          - not_null
+      - name: price
+        description: Prix par nuit en dollars
+      - name: host_id
+        description: Référence vers l'hôte
+        tests:
+          - not_null
+
+  - name: fact_reviews
+    description: >
+      Table de faits des avis clients enrichie avec le logement et l'hôte.
+      Seuls les avis avec un texte non vide sont inclus.
+    columns:
+      - name: listing_id
+        description: Référence vers le logement
+        tests:
+          - not_null
+      - name: review_date
+        description: Date de l'avis
+        tests:
+          - not_null
+      - name: sentiment
+        description: Sentiment de l'avis
+        tests:
+          - accepted_values:
+              values: ['positive', 'negative', 'neutral']
+      - name: review_text
+        description: Texte de l'avis (non NULL)
+        tests:
+          - not_null
+
+  - name: full_moon_reviews
+    description: >
+      Data product principal : avis clients enrichis avec l'indicateur de pleine lune.
+      Un avis est considéré "full moon" s'il a été posté le lendemain d'une pleine lune.
+    columns:
+      - name: listing_id
+        description: Référence vers le logement
+        tests:
+          - not_null
+      - name: review_date
+        description: Date de l'avis
+        tests:
+          - not_null
+      - name: is_full_moon
+        description: Indicateur pleine lune ('full moon' ou 'not full moon')
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['full moon', 'not full moon']
+      - name: sentiment
+        description: Sentiment de l'avis
+        tests:
+          - accepted_values:
+              values: ['positive', 'negative', 'neutral']

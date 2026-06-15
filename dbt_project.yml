@@ -1,0 +1,32 @@
+name: 'airbnb_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'airbnb_analytics'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  airbnb_analytics:
+    bronze:
+      +schema: bronze
+      +materialized: table
+    silver:
+      +schema: silver
+      +materialized: table
+    gold:
+      +schema: gold
+      +materialized: table
+
+seeds:
+  airbnb_analytics:
+    +schema: silver

@@ -1,0 +1,25 @@
+# DuckDB
+*.duckdb
+*.duckdb.wal
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Data brutes (trop lourdes pour Git)
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/

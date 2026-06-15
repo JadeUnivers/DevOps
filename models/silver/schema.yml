@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: silver_hosts
+    description: >
+      Hôtes Airbnb nettoyés et typés. Les noms manquants sont remplacés par 'Anonymous'.
+      Le champ is_superhost est converti en booléen.
+    columns:
+      - name: host_id
+        description: Identifiant unique de l'hôte (entier)
+        tests:
+          - not_null
+          - unique
+      - name: host_name
+        description: Nom de l'hôte (jamais NULL grâce au COALESCE)
+        tests:
+          - not_null
+      - name: is_superhost
+        description: Booléen indiquant si l'hôte est superhost
+        tests:
+          - not_null
+      - name: created_at
+        description: Date de création du compte hôte
+      - name: updated_at
+        description: Date de dernière mise à jour
+
+  - name: silver_reviews
+    description: >
+      Avis clients nettoyés. Les avis vides ou NULL sont filtrés.
+      Les dates sont converties au format DATE.
+    columns:
+      - name: listing_id
+        description: Identifiant du logement
+        tests:
+          - not_null
+      - name: review_date
+        description: Date de l'avis au format DATE
+        tests:
+          - not_null
+      - name: reviewer_name
+        description: Nom du reviewer (nettoyé)
+      - name: review_text
+        description: Texte de l'avis (non NULL, non vide)
+        tests:
+          - not_null
+      - name: sentiment
+        description: Sentiment normalisé en minuscules
+        tests:
+          - accepted_values:
+              values: ['positive', 'negative', 'neutral']
+
+  - name: silver_listings
+    description: >
+      Logements Airbnb nettoyés. Le prix est converti en nombre décimal.
+      Le minimum de nuits est forcé à 1 si NULL ou 0.
+    columns:
+      - name: listing_id
+        description: Identifiant unique du logement
+        tests:
+          - not_null
+          - unique
+      - name: listing_name
+        description: Nom du logement
+      - name: room_type
+        description: Type de chambre/logement
+        tests:
+          - not_null
+      - name: minimum_nights
+        description: Nombre minimum de nuits (>= 1)
+        tests:
+          - not_null
+      - name: host_id
+        description: Identifiant de l'hôte propriétaire
+        tests:
+          - not_null
+      - name: price
+        description: Prix par nuit en dollars (DOUBLE)
+
+seeds:
+  - name: seed_full_moon_dates
+    description: Dates des nuits de pleine lune utilisées pour l'analyse d'impact sur les avis
+    columns:
+      - name: full_moon_date
+        description: Date de pleine lune
+        tests:
+          - not_null
+          - unique
