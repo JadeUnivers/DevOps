@@ -78,7 +78,7 @@ airbnb_analytics/
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/<votre-org>/airbnb_analytics.git
+git clone https://github.com/JadeUnivers/DevOps.git
 cd airbnb_analytics
 ```
 
@@ -180,9 +180,9 @@ Accès : http://localhost:8501
 
 | Membre | Responsabilités |
 |--------|----------------|
-| David  | Couche Bronze, couche Silver, documentation |
-| Christ Anthony | Tests qualité, Couche Gold, revues de code |
-| Jade | Application Streamlit, README |
+| David ATCHORI | Couche Bronze, couche Silver, documentation |
+| Christ Antony TCHOKOGUEU| Tests qualité, Couche Gold, revues de code |
+| Jade DELCOURT | Application Streamlit, README |
 
 
 ---
