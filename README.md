@@ -88,6 +88,8 @@ cd airbnb_analytics
 python -m venv .venv
 # Windows
 .venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
 ```
 
 ### 3. Installer les dépendances
@@ -178,7 +180,7 @@ Accès : http://localhost:8501
 
 | Membre | Responsabilités |
 |--------|----------------|
-| Davis  | Couche Bronze, couche Silver, documentation |
+| David  | Couche Bronze, couche Silver, documentation |
 | Christ Anthony | Tests qualité, Couche Gold, revues de code |
 | Jade | Application Streamlit, README |
 
